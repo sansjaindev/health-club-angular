@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Health Club Member Details</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+ <style>
+   body {
+     font-family: 'Poppins', sans-serif;
+   }
+   .table-bordered td, .table-bordered th {
+     border: 1px solid #dee2e6 !important;
+   }
+   .table {
+     width: 100%;
+     margin-bottom: 1rem;
+     color: #212529;
+   }
+ </style>
+</head>
+<body>
+ <div class="container">
+   <table class="table table-bordered">
+     <thead>
+       <tr>
+         <th scope="col" class="h1">Sl NO</th>
+         <th scope="col" class="h2">Name</th>
+         <th scope="col" class="h3">Address</th>
+         <th scope="col" class="h4">City</th>
+         <th scope="col" class="h5">Package</th>
+         <th scope="col" class="h6">Trainer Preference</th>
+         <th scope="col" class="h7">Phone</th>
+       </tr>
+       </thead>
+       <tbody>
+        <tr *ngFor="let fitnessitem of appointments">
+          <td>{{ fitnessitem.id }}</td>
+          <td>{{ fitnessitem.firstname }} {{fitnessitem.lastname}}</td>
+          <td>{{ fitnessitem.streetaddress }}, {{ fitnessitem.city }}, {{ fitnessitem.state }}, {{ fitnessitem.country }}, {{ fitnessitem.pincode }}</td>
+          <td>{{ fitnessitem.city }}</td>
+          <td>{{ fitnessitem.packages }}</td>
+          <td>{{ fitnessitem.trainerpreference }}</td>
+          <td>{{ fitnessitem.phonenumber }}</td>
+          <!-- <td>{{ fitnessitem.email }}</td>
+          <td>{{ fitnessitem.age }}</td>
+          <td>{{ fitnessitem.physiotherapist }}</td>
+          <td>{{ fitnessitem.amount }}</td>
+          <td><button (click)="deleteAppointment(fitnessitem.id)">Delete</button></td> -->
+        </tr>
+      </tbody>
+    
+   </table>
+ </div>
+</body>
+</html>

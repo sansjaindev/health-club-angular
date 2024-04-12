@@ -1,0 +1,131 @@
+<form [formGroup]="fitnessForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="firstname">First Name:</label>
+    <input type="text" class="form-control" id="firstname" formControlName="firstname" required>
+  </div>
+  <div class="form-group">
+    <label for="lastname">Last Name:</label>
+    <input type="text" class="form-control" id="lastname" formControlName="lastname" required>
+  </div>
+  <div class="form-group">
+    <label for="age">Age:</label>
+    <input type="number" class="form-control" id="age" formControlName="age" required>
+  </div>
+  <div class="form-group">
+    <label for="phonenumber">Phone Number:</label>
+    <input type="tel" class="form-control" id="phonenumber" formControlName="phonenumber" required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email" formControlName="email" required
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+  </div>
+  <div class="form-group">
+    <label for="streetaddress">Street Address:</label>
+    <input type="text" class="form-control" id="streetaddress" formControlName="streetaddress" required>
+  </div>
+  <div class="form-group">
+    <label for="city">City:</label>
+    <input type="text" class="form-control" id="city" formControlName="city" required>
+  </div>
+  <div class="form-group">
+    <label for="state">State:</label>
+    <input type="text" class="form-control" id="state" formControlName="state" required>
+  </div>
+  <div class="form-group">
+    <label for="country">Country:</label>
+    <input type="text" class="form-control" id="country" formControlName="country" required>
+  </div>
+  <div class="form-group">
+    <label for="pincode">Pincode:</label>
+    <input type="number" class="form-control" id="pincode" formControlName="pincode" required>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="trainerpreference">Trainer Preference</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="trainerpreference" id="male_trainer" value="male"
+          formControlName="trainerpreference">
+        <label class="form-check-label" for="male_trainer">
+          Male Trainer
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="trainerpreference" id="female_trainer" value="female"
+          formControlName="trainerpreference">
+        <label class="form-check-label" for="female_trainer">
+          Female Trainer
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="trainerpreference" id="no_preference" value="no_preference"
+          formControlName="trainerpreference">
+        <label class="form-check-label" for="no_preference">
+          No Preference
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="physiotherapist">Do you need Physiotherapist</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="physiotherapist" id="yes" value="yes"
+          formControlName="physiotherapist">
+        <label class="form-check-label" for="yes">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="physiotherapist" id="no" value="no"
+          formControlName="physiotherapist">
+        <label class="form-check-label" for="no">
+          No
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <label for="packages">Select a package</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="packages" id="one_time_appointment"
+          value="one_time_appointment" formControlName="packages">
+        <label class="form-check-label" for="one_time_appointment">
+          One time appointment (Rs. 500/-)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="packages" id="four_sessions_per_week"
+          value="four_sessions_per_week" formControlName="packages">
+        <label class="form-check-label" for="four_sessions_per_week">
+          4 sessions per week (Rs. 400/- per session)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="packages" id="five_sessions_per_week"
+          value="five_sessions_per_week" formControlName="packages">
+        <label class="form-check-label" for="five_sessions_per_week">
+          5 sessions per week (Rs. 300/- per session)
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="fitnessForm.get('packages').value !== 'one_time_appointment'">
+    <div class="col-md-6">
+      <label for="weeks">Weeks</label>
+      <input type="number" id="weeks" placeholder="Enter the number of weeks" formControlName="weeks">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label for="inr">Amount(Rs)</label>
+      <input type="number" id="inr" formControlName="inr" change="calculateAmount()" required readonly [value]="amount">
+    </div>
+    <div class="col-md-6">
+      <label for="paisa">Amount(paisa)</label>
+      <input type="number" id="paisa" formControlName="paisa" change="calculateAmount()" required readonly [value]="0">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="fitnessForm.invalid">Submit</button>
+</form>
